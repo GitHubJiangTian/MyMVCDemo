@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public class SessionFactory {
+public class OracleSessionFactory {
 	/**
 	 * 获取连接
 	 * @return 与数据库的连接
@@ -26,15 +26,15 @@ public class SessionFactory {
 	}*/
 	
 	private DataSource ds;
-	private static SessionFactory sessionFactory;
+	private static OracleSessionFactory sessionFactory;
 	
-	private SessionFactory() {
-		ds = new ComboPooledDataSource("mysql");
+	private OracleSessionFactory() {
+		ds = new ComboPooledDataSource("oracle");
 	}
 	
-	public static SessionFactory getInstance() {
+	public static OracleSessionFactory getInstance() {
 		if(sessionFactory == null) {
-			sessionFactory = new SessionFactory();
+			sessionFactory = new OracleSessionFactory();
 		}
 		return sessionFactory;
 	}
