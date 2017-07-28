@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="productActions" namespace="/" extends="struts-default">
+		<action name="product_save" class="com.company.action.ProductAction" method="save">
+			<result name="success" type="redirectAction">product_findAll</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="product_delete" class="com.company.action.ProductAction" method="delete">
+			<result name="success" type="redirectAction">product_findAll</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="product_update" class="com.company.action.ProductAction" method="update">
+			<result name="success" type="redirectAction">product_findAll</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="product_findAll" class="com.company.action.ProductAction" method="findAll">
+			<result name="success" type="dispatcher">/product_findAll.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="product_findById" class="com.company.action.ProductAction" method="findById">
+			<result name="success" type="dispatcher">/product_findAll.jsp</result>
+			<result name="updatesuccess" type="dispatcher">/product_update.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="product_findByName" class="com.company.action.ProductAction" method="findByName">
+			<result name="success" type="dispatcher">/product_findAll.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+	</package>
+
+</struts>

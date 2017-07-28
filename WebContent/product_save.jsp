@@ -7,7 +7,7 @@
 <title>SAVE_PAGE</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/ProductSaveServlet" method="post">
+	<form action="${pageContext.request.contextPath }/product_save.action" method="post">
 		<table>
 			<tr>
 				<td>商品名称</td>

@@ -7,7 +7,7 @@
 <title>UPDATE_PAGE</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath }/ProductUpdateServlet" method="post">
+<form action="${pageContext.request.contextPath }/product_update.action" method="post">
 		<table border="1px">
 			<tr>
 				<td>商品编号</td>

@@ -26,8 +26,8 @@
 				<td>${product.ean }</td>
 				<td>${product.price }</td>
 				<td>
-				<a href="${pageContext.request.contextPath }/ProductDeleteServlet?pid=${product.pid }">删除</a>
-				<a href="${pageContext.request.contextPath }/ProductFindByIdServlet?pid=${product.pid }&option=update">修改</a>
+				<a href="${pageContext.request.contextPath }/product_delete.action?pid=${product.pid }">删除</a>
+				<a href="${pageContext.request.contextPath }/product_findById.action?pid=${product.pid }&option=update">修改</a>
 				</td>
 			</tr>
 		</c:forEach>
@@ -35,7 +35,7 @@
 	<br />
 	<br />
 	<br />
-	<form action="${pageContext.request.contextPath }/ProductFindByIdServlet" method="post">
+	<form action="${pageContext.request.contextPath }/product_findById.action" method="post">
 		<table>
 			<tr>
 				<td>PID:</td>
@@ -47,7 +47,7 @@
 	<br />
 	<br />
 	<br />
-	<form action="${pageContext.request.contextPath }/ProductFindByNameServlet" method="post">
+	<form action="${pageContext.request.contextPath }/product_findByName.action" method="post">
 		<table>
 			<tr>
 				<td>PNAME：</td>
@@ -59,7 +59,7 @@
 	<br />
 	<br />
 	<br />
-	<a href="${pageContext.request.contextPath }/product_save.jsp"><button>增加商品</button></a.>
+	<a href="${pageContext.request.contextPath }/product_save.jsp"><button>增加商品</button></a>
 
 </body>
 </html>
