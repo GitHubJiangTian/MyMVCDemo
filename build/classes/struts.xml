@@ -5,6 +5,6 @@
 
 <struts>
 
-	<include file="struts_product.xml"></include>
+	<include file="struts_emp.xml"></include>
 	
 </struts>
