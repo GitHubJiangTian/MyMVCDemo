@@ -30,7 +30,7 @@
 
 		<!-- 实现数据库连接 -->
         <property name="driverClass">oracle.jdbc.driver.OracleDriver</property>  
-        <property name="jdbcUrl">jdbc:oracle:thin:@10.2.156.237:1521:orcl</property>  
+        <property name="jdbcUrl">jdbc:oracle:thin:@10.2.156.193:1521:orcl</property>  
         <property name="user">scott</property>  
         <property name="password">tiger</property>  
         

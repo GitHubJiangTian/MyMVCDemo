@@ -6,5 +6,6 @@
 <struts>
 
 	<include file="struts_emp.xml"></include>
+	<include file="struts_i18n.xml"></include>
 	
 </struts>
