@@ -8,17 +8,17 @@ import org.apache.struts2.ServletActionContext;
 import com.company.dao.pojo.Emp;
 import com.company.service.factory.ServiceFactory;
 import com.company.service.iservice.IEmpService;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class EmpAction {
+public class EmpAction implements ModelDriven<Emp>{
 
-	private int empno;
-	private String ename;
-	private String job;
-	private int mgr;
-	private String hiredate;
-	private double sal;
-	private double comm;
-	private int deptno;
+	private Emp emp = new Emp();
+	
+	@Override
+	public Emp getModel() {
+		return emp;
+	}
+	
 	private String option;
 
 	public String getOption() {
@@ -29,69 +29,6 @@ public class EmpAction {
 		this.option = option;
 	}
 
-	public int getEmpno() {
-		return empno;
-	}
-
-	public void setEmpno(int empno) {
-		this.empno = empno;
-	}
-
-	public String getEname() {
-		return ename;
-	}
-
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
-
-	public String getJob() {
-		return job;
-	}
-
-	public void setJob(String job) {
-		this.job = job;
-	}
-
-	public int getMgr() {
-		return mgr;
-	}
-
-	public void setMgr(int mgr) {
-		this.mgr = mgr;
-	}
-
-	public String getHiredate() {
-		return hiredate;
-	}
-
-	public void setHiredate(String hiredate) {
-		this.hiredate = hiredate;
-	}
-
-	public double getSal() {
-		return sal;
-	}
-
-	public void setSal(double sal) {
-		this.sal = sal;
-	}
-
-	public double getComm() {
-		return comm;
-	}
-
-	public void setComm(double comm) {
-		this.comm = comm;
-	}
-
-	public int getDeptno() {
-		return deptno;
-	}
-
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
-	}
 
 	public IEmpService getEmpService() {
 		return EmpService;
@@ -110,19 +47,15 @@ public class EmpAction {
 
 	// 核心业务
 	public String save() {
-		Emp p = new Emp(empno, ename, job,mgr,hiredate,sal,comm,deptno);
-		return EmpService.save(p);
+		return EmpService.save(emp);
 	}
 
 	public String update() {
-		Emp p = new Emp(empno, ename, job,mgr,hiredate,sal,comm,deptno);
-		return EmpService.update(p);
+		return EmpService.update(emp);
 	}
 
 	public String delete() {
-		Emp p = new Emp();
-		p.setEmpno(empno);
-		return EmpService.delete(p);
+		return EmpService.delete(emp);
 	}
 
 	public String findAll() {
@@ -137,7 +70,7 @@ public class EmpAction {
 
 	public String findById() {
 		String msg = "error";
-		Emp p = EmpService.findById(empno);
+		Emp p = EmpService.findById(emp.getEmpno());
 		List<Emp> EmpList = new ArrayList<Emp>();
 		if (p != null) {
 			if("update".equals(option)) {
@@ -154,11 +87,13 @@ public class EmpAction {
 
 	public String findByName() {
 		String msg = "error";
-		List<Emp> EmpList = EmpService.findByName(ename);
+		List<Emp> EmpList = EmpService.findByName(emp.getEname());
 		if (EmpList != null && EmpList.size() > 0) {
 			ServletActionContext.getRequest().setAttribute("EmpList", EmpList);
 			msg = "success";
 		}
 		return msg;
 	}
+
+
 }

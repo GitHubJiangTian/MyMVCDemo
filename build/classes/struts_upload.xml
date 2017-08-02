@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="myUploadActions" namespace="/" extends="struts-default">
+		<!-- upload.action -->
+		<action name="upload" class="com.company.action.UploadAction">
+		
+			<result name="success">/demo_upload.jsp</result>
+			<result name="input">/error_upload.jsp</result>
+			
+			<!-- 配置该action的拦截器 :但凡出现自定义拦截器，必须将defaultStack拦截器栈显式声明在最后 -->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/png,image/x-png,image/gif,image/jpeg,image/bmp,image/jpg
+				</param>
+				<param name="maximumSize">300*1024</param>
+			</interceptor-ref>
+			
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+		
+	</package>
+	
+	
+</struts>

@@ -6,6 +6,7 @@
 <struts>
 	
 	<package name="empActions" namespace="/" extends="struts-default">
+	
 		<global-results>
 			<result name="error" type="redirect">/error.jsp</result>
 		</global-results>

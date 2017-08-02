@@ -40,7 +40,7 @@ public class DaoProductImpl implements IProductDao {
 	@Override
 	public void delete(Product t) throws Exception {
 		Connection con = SessionFactory.getInstance().getSession();
-		String sql = "DELETE FROM t_product WHERE empno = ?";
+		String sql = "DELETE FROM t_product WHERE pid = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, t.getPid());
 		ps.executeUpdate();

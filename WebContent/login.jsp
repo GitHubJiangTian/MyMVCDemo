@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset=utf-8>
-<title>Insert title here</title>
+<title>LOGIN</title>
 </head>
 <body>
-	
+	<form action="login.action" method="post">
+		<input type="text" name="username" value="aaa"/>
+		<input type="password" name="password" value="aaa"/>
+		<input type="submit" value="登陆"/>
+	</form>
 </body>
 </html>

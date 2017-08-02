@@ -7,8 +7,11 @@
 
 	<constant name="struts.custom.i18n.resources" value="csdn"></constant>
 	
-	<package name="myi18n" namespace="/" extends="struts-default">
-	<!-- method默认是execute -->
+	<package name="myi18nActions" namespace="/" extends="struts-default">
+		<!-- 
+			myi18n.action
+			method默认是execute 
+		-->
 		<action name="myi18n" class="com.company.action.Myi18nAction">
 			<!-- result 默认name=success -->
 			<result>/demo_i18n.jsp</result>
