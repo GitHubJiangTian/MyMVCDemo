@@ -5,10 +5,11 @@
 
 <struts>
 
+	<include file="struts_loginregistry.xml"></include>
 	<include file="struts_product.xml"></include>
 	<include file="struts_emp.xml"></include>
-	<include file="struts_login.xml"></include>
 	<include file="struts_i18n.xml"></include>
 	<include file="struts_upload.xml"></include>
+	<include file="struts_islogin.xml"></include>
 	
 </struts>

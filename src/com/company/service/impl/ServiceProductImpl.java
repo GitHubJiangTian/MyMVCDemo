@@ -23,11 +23,8 @@ public class ServiceProductImpl implements IProductService {
 	public String save(Product t) {
 		String msg = "error";
 		try {
-			Product p = productDao.findById(t.getPid());
-			if (p == null) {
-				productDao.save(t);
-				msg = "success";
-			}
+			productDao.save(t);
+			msg = "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,11 +35,8 @@ public class ServiceProductImpl implements IProductService {
 	public String update(Product t) {
 		String msg = "error";
 		try {
-			Product p = productDao.findById(t.getPid());
-			if (p != null) {
-				productDao.update(t);
-				msg = "success";
-			}
+			productDao.update(t);
+			msg = "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,11 +47,8 @@ public class ServiceProductImpl implements IProductService {
 	public String delete(Product t) {
 		String msg = "error";
 		try {
-			Product p = productDao.findById(t.getPid());
-			if (p != null) {
-				productDao.delete(t);
-				msg = "success";
-			}
+			productDao.delete(t);
+			msg = "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -16,11 +16,15 @@
 <br/>
 <br/>
 <a href="${pageContext.request.contextPath }/product_save.jsp"><button>添加商品（可能需要登陆，账户密码都为aaa）</button></a>
+<br/>
+<br/>
+<a href="${pageContext.request.contextPath }/login.jsp"><button>登陆</button></a>
+<a href="${pageContext.request.contextPath }/registry.jsp"><button>注册</button></a>
 <h2>OTHER</h2>
 <a href="${pageContext.request.contextPath }/demo_upload.jsp"><button>文件上传测试</button></a>
 <a href="${pageContext.request.contextPath }/demo_i18n.jsp"><button>国际化测试</button></a>
 <h2>IsLoginTest</h2>
-<a href="${pageContext.request.contextPath }/login.jsp"><button>登陆</button></a>
-<a href="${pageContext.request.contextPath }/registry.jsp"><button>注册</button></a>
+<a href="${pageContext.request.contextPath }/demo_islogin.jsp"><button>登陆(权限登陆)</button></a>
+<a href="${pageContext.request.contextPath }/registry.jsp"><button>注册（暂时无效）</button></a>
 </body>
 </html>

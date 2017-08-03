@@ -23,11 +23,8 @@ public class ServiceEmpImpl implements IEmpService {
 	public String save(Emp t) {
 		String msg = "error";
 		try {
-			Emp p = EmpDao.findById(t.getEmpno());
-			if (p == null) {
-				EmpDao.save(t);
-				msg = "success";
-			}
+			EmpDao.save(t);
+			msg = "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,11 +35,8 @@ public class ServiceEmpImpl implements IEmpService {
 	public String update(Emp t) {
 		String msg = "error";
 		try {
-			Emp p = EmpDao.findById(t.getEmpno());
-			if (p != null) {
-				EmpDao.update(t);
-				msg = "success";
-			}
+			EmpDao.update(t);
+			msg = "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,11 +47,8 @@ public class ServiceEmpImpl implements IEmpService {
 	public String delete(Emp t) {
 		String msg = "error";
 		try {
-			Emp p = EmpDao.findById(t.getEmpno());
-			if (p != null) {
-				EmpDao.delete(t);
-				msg = "success";
-			}
+			EmpDao.delete(t);
+			msg = "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

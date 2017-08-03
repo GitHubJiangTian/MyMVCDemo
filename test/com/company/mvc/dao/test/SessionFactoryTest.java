@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.company.dao.util.SessionFactory;
+import com.company.dao.util.MySQLSessionFactory;
 
 
 public class SessionFactoryTest {
@@ -21,7 +21,7 @@ public class SessionFactoryTest {
 
 	@Test
 	public void testGetConnection() throws Exception {
-		System.out.println(SessionFactory.getInstance().getSession().toString());
+		System.out.println(MySQLSessionFactory.getInstance().getSession().toString());
 	}
 
 }

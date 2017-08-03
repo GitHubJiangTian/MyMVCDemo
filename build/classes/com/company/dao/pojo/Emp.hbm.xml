@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-3 2:24:16 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.company.dao.pojo.Emp" table="O_EMP">
+       <!--  <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id> -->
+        <id name="empno" type="int">
+            <column name="EMPNO" />
+            <generator class="native" />
+        </id>
+        <!-- <property name="empno" type="int">
+            <column name="EMPNO" />
+        </property> -->
+        <property name="ename" type="java.lang.String">
+            <column name="ENAME" />
+        </property>
+        <property name="job" type="java.lang.String">
+            <column name="JOB" />
+        </property>
+        <property name="mgr" type="int">
+            <column name="MGR" />
+        </property>
+        <property name="hiredate" type="date">
+            <column name="HIREDATE" />
+        </property>
+        <property name="sal" type="double">
+            <column name="SAL" />
+        </property>
+        <property name="comm" type="double">
+            <column name="COMM" />
+        </property>
+        <property name="deptno" type="int">
+            <column name="DEPTNO" />
+        </property>
+    </class>
+</hibernate-mapping>

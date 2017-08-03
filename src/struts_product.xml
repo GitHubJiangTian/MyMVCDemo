@@ -21,7 +21,7 @@
 		<global-results>
 			<result name="error" type="redirect">/error.jsp</result>
 			<!-- 当判断为未登陆，返回的结果 -->
-			<result name="unlogin" type="redirect">/login.jsp</result>
+			<result name="unlogin" type="redirect">/demo_islogin.jsp</result>
 		</global-results>
 		
 		<!-- 使用通配符！

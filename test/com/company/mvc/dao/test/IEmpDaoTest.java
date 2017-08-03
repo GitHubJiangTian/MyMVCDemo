@@ -18,10 +18,10 @@ public class IEmpDaoTest {
 
 	@Test
 	public void testFindByName() throws Exception {
-		Emp t = new Emp(8999,"aa","aaa",1111,"2020-02-02",20,20,20);
+//		Emp t = new Emp(8999,"aa","aaa",1111,"2020-02-02",20,20,20);
 //		t.setEmpno(9999,"ss","aaa",1111,"2020-02-02",20,20,20);
-		EmpDao.delete(t);
-		System.out.println("11");
+//		EmpDao.delete(t);
+//		System.out.println("11");
 	}
 
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="LoginRegistryActions" namespace="/" extends="struts-default">
+
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<!-- 
+			mysql_login.action
+			mysql_registry.action
+		 -->
+		
+		<action name="mysql_login" class="com.company.action.LoginRegistryAction"
+			method="login">
+			<result name="success" type="redirectAction">product_findAll</result>
+		</action>
+		<action name="mysql_registry" class="com.company.action.LoginRegistryAction"
+			method="registry">
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
+	</package>
+
+</struts>

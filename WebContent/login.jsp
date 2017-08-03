@@ -7,9 +7,9 @@
 <title>LOGIN</title>
 </head>
 <body>
-	<form action="login.action" method="post">
-		<input type="text" name="username" value="aaa"/>
-		<input type="password" name="password" value="aaa"/>
+	<form action="mysql_login.action" method="post">
+		<input type="text" name="username" value="aaa"/><br/>
+		<input type="password" name="userpwd" value="aaa"/><br/>
 		<input type="submit" value="登陆"/>
 	</form>
 </body>
