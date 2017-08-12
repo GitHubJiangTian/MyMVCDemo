@@ -24,6 +24,7 @@
 <a href="${pageContext.request.contextPath }/demo_upload.jsp"><button>文件上传测试</button></a>
 <a href="${pageContext.request.contextPath }/demo_i18n.jsp"><button>国际化测试</button></a>
 <h2>IsLoginTest</h2>
+<h4>因为访问是跳转product的findALL页面，该页面已经添加权限验证，网页验证不了，但是在MYSQL数据库里可以看得到。</h4>
 <a href="${pageContext.request.contextPath }/demo_islogin.jsp"><button>登陆(权限登陆)</button></a>
 <a href="${pageContext.request.contextPath }/registry.jsp"><button>注册（暂时无效）</button></a>
 </body>

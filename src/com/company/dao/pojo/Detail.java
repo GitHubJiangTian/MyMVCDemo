@@ -13,6 +13,14 @@ public class Detail implements Serializable{
 	private int userid;//自增主键
 	private String realname;//用户真实姓名
 	private Double balance;//用户余额
+	private Login login;//Hibernate 一对一ORM需要添加（与login对应）
+	
+	public Login getLogin() {
+		return login;
+	}
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 	public int getUserid() {
 		return userid;
 	}
@@ -38,6 +46,10 @@ public class Detail implements Serializable{
 	}
 	public Detail() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "Detail [userid=" + userid + ", realname=" + realname + ", balance=" + balance + "]";
 	}
 	
 }

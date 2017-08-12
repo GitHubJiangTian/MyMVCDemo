@@ -46,8 +46,10 @@ public class UploadAction extends ActionSupport {
 	@Override
 	public String execute() {
 		String path = "d:/upload";
-		//String path1 = ServletActionContext.getServletContext().getRealPath("/image");
-		//output:D:\apache-tomcat-8.5.16\webapps\MyMCVDemo\image
+		/*
+		 * String path1 = ServletActionContext.getServletContext().getRealPath("/image");
+		 * output:D:\apache-tomcat-8.5.16\webapps\MyMCVDemo\image
+		 */
 		File filePath = new File(path);
 		if(!filePath.exists()) {
 			filePath.mkdir();//此目录不存在，创建新的目录文件夹。

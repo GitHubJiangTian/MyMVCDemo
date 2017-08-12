@@ -12,7 +12,7 @@ public class Emp implements Serializable {
 	private int mgr;
 	private Date hiredate;
 	private double sal;
-	private double comm;
+	private Double comm;
 	private int deptno;
 
 //	public int getEid() {
@@ -71,11 +71,11 @@ public class Emp implements Serializable {
 		this.sal = sal;
 	}
 
-	public double getComm() {
+	public Double getComm() {
 		return comm;
 	}
 
-	public void setComm(double comm) {
+	public void setComm(Double comm) {
 		this.comm = comm;
 	}
 

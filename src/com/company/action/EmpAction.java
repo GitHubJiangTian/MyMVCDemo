@@ -1,108 +1,41 @@
 package com.company.action;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.company.dao.pojo.Emp;
 import com.company.service.factory.ServiceFactory;
 import com.company.service.iservice.IEmpService;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class EmpAction {
+public class EmpAction implements ModelDriven<Emp>, SessionAware {
 
-//	private int eid;
-	private int empno;
-	private String ename;
-	private String job;
-	private int mgr;
-	private Date hiredate;
-	private double sal;
-	private double comm;
-	private int deptno;
+	// 连接到service
+	private IEmpService EmpService;
+	private Map<String, Object> sessionMap;
+	private Emp emp = new Emp();
 	private String option;
 
-//	public int getEid() {
-//		return eid;
-//	}
-//
-//	public void setEid(int eid) {
-//		this.eid = eid;
-//	}
-
-	public String getOption() {
-		return option;
+	@Override
+	public void setSession(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
 	}
 
-	public void setOption(String option) {
-		this.option = option;
+	@Override
+	public Emp getModel() {
+		return emp;
 	}
 
-	public int getEmpno() {
-		return empno;
+	// 构造方法
+	public EmpAction() {
+		EmpService = ServiceFactory.getEmpInstance();
 	}
 
-	public void setEmpno(int empno) {
-		this.empno = empno;
-	}
-
-	public String getEname() {
-		return ename;
-	}
-
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
-
-	public String getJob() {
-		return job;
-	}
-
-	public void setJob(String job) {
-		this.job = job;
-	}
-
-	public int getMgr() {
-		return mgr;
-	}
-
-	public void setMgr(int mgr) {
-		this.mgr = mgr;
-	}
-
-	public Date getHiredate() {
-		return hiredate;
-	}
-
-	public void setHiredate(Date hiredate) {
-		this.hiredate = hiredate;
-	}
-
-	public double getSal() {
-		return sal;
-	}
-
-	public void setSal(double sal) {
-		this.sal = sal;
-	}
-
-	public double getComm() {
-		return comm;
-	}
-
-	public void setComm(double comm) {
-		this.comm = comm;
-	}
-
-	public int getDeptno() {
-		return deptno;
-	}
-
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
-	}
-
+	// 连接service层
 	public IEmpService getEmpService() {
 		return EmpService;
 	}
@@ -111,32 +44,26 @@ public class EmpAction {
 		EmpService = empService;
 	}
 
-	// 连接到service
-	private IEmpService EmpService;
-
-	public EmpAction() {
-		EmpService = ServiceFactory.getEmpInstance();
+	// option的getset方法
+	public String getOption() {
+		return option;
 	}
 
-//	eid,empno,ename,job,mgr,hiredate,sal,comm,deptno;
-	
+	public void setOption(String option) {
+		this.option = option;
+	}
+
 	// 核心业务
 	public String save() {
-		Emp e = new Emp(empno,ename,job,mgr,hiredate,sal,comm,deptno);
-		return EmpService.save(e);
+		return EmpService.save(emp);
 	}
 
 	public String update() {
-		Emp e = new Emp(empno,ename,job,mgr,hiredate,sal,comm,deptno);
-//		e.setEid(eid);
-		return EmpService.update(e);
+		return EmpService.update(emp);
 	}
 
 	public String delete() {
-		Emp e = new Emp();
-		e.setEmpno(empno);
-//		e.setEid(eid);
-		return EmpService.delete(e);
+		return EmpService.delete(emp);
 	}
 
 	public String findAll() {
@@ -145,40 +72,41 @@ public class EmpAction {
 		if (EmpList != null && EmpList.size() > 0) {
 			ServletActionContext.getRequest().setAttribute("EmpList", EmpList);
 			msg = "success";
+		} else {
+			sessionMap.put("errMsg", "没有任何员工");
 		}
 		return msg;
 	}
 
 	public String findById() {
 		String msg = "error";
-		Emp e = new Emp();
-		e.setEmpno(empno);
-		Emp p = EmpService.findById(e.getEmpno());
+		Emp p = EmpService.findById(emp.getEmpno());
 		List<Emp> EmpList = new ArrayList<Emp>();
 		if (p != null) {
-			if("update".equals(option)) {
+			if ("update".equals(option)) {
 				ServletActionContext.getRequest().setAttribute("Emp", p);
 				msg = "updatesuccess";
-			}else {
+			} else {
 				EmpList.add(p);
 				ServletActionContext.getRequest().setAttribute("EmpList", EmpList);
 				msg = "success";
 			}
+		} else {
+			sessionMap.put("errMsg", "未找到该员工");
 		}
 		return msg;
 	}
 
 	public String findByName() {
 		String msg = "error";
-		Emp e = new Emp();
-		e.setEname(ename);
-		List<Emp> EmpList = EmpService.findByName(e.getEname());
+		List<Emp> EmpList = EmpService.findByName(emp.getEname());
 		if (EmpList != null && EmpList.size() > 0) {
 			ServletActionContext.getRequest().setAttribute("EmpList", EmpList);
 			msg = "success";
+		} else {
+			sessionMap.put("errMsg", "未找到该员工");
 		}
 		return msg;
 	}
-
 
 }

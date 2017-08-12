@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-8-2 22:26:06 by Hibernate Tools 3.5.0.Final -->
-<hibernate-mapping>
-    <class name="com.company.dao.pojo.Detail" table="T_DETAIL">
+<!-- Generated 2017-8-7 18:42:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.company.dao.pojo">
+    <class name="Detail" table="T_DETAIL">
         <id name="userid" type="int">
             <column name="USERID" />
-            <generator class="native" />
+            <generator class="foreign" >
+            	<param name="property">login</param>
+            </generator>
         </id>
         <property name="realname" type="java.lang.String">
             <column name="REALNAME" />
@@ -14,5 +16,6 @@
         <property name="balance" type="java.lang.Double">
             <column name="BALANCE" />
         </property>
+        <one-to-one name="login" class="Login" constrained="true"></one-to-one>
     </class>
 </hibernate-mapping>

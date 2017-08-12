@@ -34,7 +34,7 @@
         <property name="hibernate.format_sql">true</property>
         
          <!-- 对hbm文件进行注册 -->
-        <mapping resource="com/company/dao/pojo/Product.hbm.xml" />
+    	<mapping resource="com/company/dao/pojo/Product.hbm.xml" />
         <mapping resource="com/company/dao/pojo/Login.hbm.xml" />
         <mapping resource="com/company/dao/pojo/Detail.hbm.xml" />
     </session-factory>

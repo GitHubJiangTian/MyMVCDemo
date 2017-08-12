@@ -1,6 +1,7 @@
 package com.company.mvc.service.test;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,10 @@ public class ServiceEmpImplTest {
 	}
 	@Test
 	public void findAll() {
-		EmpService.findAll();
+		List<Emp> list = EmpService.findAll();
+		for(Emp e : list) {
+			System.out.println(e);
+		}
 		System.out.println("11");
 	}
 
@@ -39,9 +43,14 @@ public class ServiceEmpImplTest {
 
 	@Test
 	public void testDelete() {
-//		Emp t = new Emp(8999,"aa","aaa",1111,"2020-02-02",20,20,20);
-//		EmpService.delete(t);
-//		System.out.println("11");
+		Emp t = new Emp();
+		t.setEmpno(7777);
+		Emp t1 = new Emp();
+		t1.setEmpno(1222);
+		EmpService.delete(t1);
+		System.out.println("end>>>>>>>>>>>>>>>>>>>>>>>");
+		EmpService.delete(t);
+		System.out.println("end>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 
 }

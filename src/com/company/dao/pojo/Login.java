@@ -14,6 +14,14 @@ public class Login implements Serializable{
 	private int userid;//自增主键
 	private String username;//登录名
 	private String userpwd;//密码
+	private Detail detail;//Hibernate 一对一ORM需要添加（与detail对应）
+	
+	public Detail getDetail() {
+		return detail;
+	}
+	public void setDetail(Detail detail) {
+		this.detail = detail;
+	}
 	public int getUserid() {
 		return userid;
 	}
@@ -39,6 +47,10 @@ public class Login implements Serializable{
 	}
 	public Login() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "Login [userid=" + userid + ", username=" + username + ", userpwd=" + userpwd + "]";
 	}
 	
 }

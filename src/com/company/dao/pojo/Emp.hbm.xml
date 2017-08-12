@@ -10,7 +10,7 @@
         </id> -->
         <id name="empno" type="int">
             <column name="EMPNO" />
-            <generator class="native" />
+            <generator class="assigned" />
         </id>
         <!-- <property name="empno" type="int">
             <column name="EMPNO" />
@@ -30,7 +30,7 @@
         <property name="sal" type="double">
             <column name="SAL" />
         </property>
-        <property name="comm" type="double">
+        <property name="comm" type="java.lang.Double">
             <column name="COMM" />
         </property>
         <property name="deptno" type="int">
