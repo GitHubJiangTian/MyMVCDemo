@@ -29,7 +29,7 @@
 			product_findById
 			product_findByName
 		 -->
-		<action name="product_find*" class="com.company.action.ProductAction" method="find{1}">
+		<action name="product_find*" class="productAction" method="find{1}">
 			<result name="success" type="dispatcher">/product_findAll.jsp</result>
 			<result name="updatesuccess" type="dispatcher">/product_update.jsp</result>
 			<interceptor-ref name="myStack"></interceptor-ref>
@@ -41,7 +41,7 @@
 			product_delete
 			product_update
 		 -->
-		<action name="product_*" class="com.company.action.ProductAction" method="{1}">
+		<action name="product_*" class="productAction" method="{1}">
 			<result name="success" type="redirectAction">product_findAll</result>
 			<interceptor-ref name="myStack"></interceptor-ref>
 		</action>

@@ -8,12 +8,12 @@ import com.company.dao.impl.DaoLoginRegistryImpl;
 import com.company.dao.impl.DaoProductImpl;
 
 public class DaoFactory {
-	public static IProductDao getProductInstance(){
-		return new DaoProductImpl();
-	}
-	public static ILoginRegistryDao getLoginRegistryInstance(){
-		return new DaoLoginRegistryImpl();
-	}
+//	public static IProductDao getProductInstance(){
+//		return new DaoProductImpl();
+//	}
+//	public static ILoginRegistryDao getLoginRegistryInstance(){
+//		return new DaoLoginRegistryImpl();
+//	}
 	public static IEmpDao getEmpInstance(){
 		return new DaoEmpImpl();
 	}

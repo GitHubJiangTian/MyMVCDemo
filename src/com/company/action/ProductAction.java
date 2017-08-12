@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import com.company.dao.pojo.Product;
-import com.company.service.factory.ServiceFactory;
 import com.company.service.iservice.IProductService;
 import com.opensymphony.xwork2.ModelDriven;
 
+@Controller("productAction")
+@Scope("prototype")
 public class ProductAction implements ModelDriven<Product> {
 
 	// ModelDriven写法
@@ -32,10 +37,11 @@ public class ProductAction implements ModelDriven<Product> {
 	}
 
 	// 连接到service
+	@Autowired
+	@Qualifier("productService")
 	private IProductService productService;
 
 	public ProductAction() {
-		productService = ServiceFactory.getProductInstance();
 	}
 
 	// 核心业务

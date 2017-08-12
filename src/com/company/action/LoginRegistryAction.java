@@ -4,22 +4,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import com.company.dao.pojo.Detail;
 import com.company.dao.pojo.Login;
-import com.company.service.factory.ServiceFactory;
 import com.company.service.iservice.ILoginService;
 import com.opensymphony.xwork2.ActionSupport;
 
+@Controller("loginregistryAction")
+@Scope("prototype")
 public class LoginRegistryAction extends ActionSupport implements SessionAware{
 	
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Autowired
+	@Qualifier("loginService")
 	private ILoginService loginService;
 
 	public LoginRegistryAction() {
-		loginService = ServiceFactory.getLoginInstance();
 	}
 	
 	private Map<String, Object> session = new HashMap<String, Object>() ;
@@ -70,6 +76,8 @@ public class LoginRegistryAction extends ActionSupport implements SessionAware{
 	public String registry() {
 		Login login = new Login(username,userpwd);
 		Detail detail = new Detail(realname,balance);
+		login.setDetail(detail);
+		detail.setLogin(login);
 		String msg = loginService.registry(login, detail);
 		return msg;
 	}

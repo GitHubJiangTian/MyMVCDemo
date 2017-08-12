@@ -2,7 +2,11 @@ package com.company.service.impl;
 
 import java.util.List;
 
-import com.company.dao.factory.DaoFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.company.dao.idao.ILoginRegistryDao;
 import com.company.dao.pojo.Detail;
 import com.company.dao.pojo.Login;
@@ -14,12 +18,15 @@ import com.company.service.iservice.ILoginService;
  * @author wpjt1
  * 接口ILoginService的实现类
  */
+@Service("loginService")
 public class ServiceLoginImpl implements ILoginService {
 
+	
+	@Autowired
+	@Qualifier("loginregistryDao")
 	private ILoginRegistryDao loginRegistryDao;
 	
 	public ServiceLoginImpl() {
-		loginRegistryDao = DaoFactory.getLoginRegistryInstance();
 	}
 	
 	@Override
@@ -51,7 +58,7 @@ public class ServiceLoginImpl implements ILoginService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Transactional
 	@Override
 	public String registry(Login login, Detail detail) {
 		String msg = "error";
@@ -64,6 +71,7 @@ public class ServiceLoginImpl implements ILoginService {
 		return msg;
 	}
 
+	@Transactional
 	@Override
 	public String login(Login login) {
 		String msg = "error";

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.company"></context:component-scan>
+	
+	<!-- c3p0 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 根据properties文件读取数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+		<property name="driverClass" value="${connection.driver_class}"></property>
+		<property name="jdbcUrl" value="${connection.url}"></property>
+		<property name="user" value="${connection.username}"></property>
+		<property name="password" value="${connection.password}"></property>
+		<property name="minPoolSize" value="${c3p0.min_size}"></property>
+		<property name="maxPoolSize" value="${c3p0.max_size}"></property>
+		<property name="acquireIncrement" value="${c3p0.acquire_increment}"></property>
+		<property name="idleConnectionTestPeriod" value="${c3p0.idle_test_period}"></property>
+		<property name="checkoutTimeout" value="${c3p0.timeout}"></property>
+		<property name="maxStatements" value="${c3p0.max_statements}"></property>
+	</bean>
+
+	<!-- 配置SessionFactory的实例化对象sessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 依赖注入dataSource数据源对象 -->
+		<property name="dataSource" ref="dataSource"></property>
+		
+		<!-- 读入hibernate.cfg.xml对象 -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		
+		<!-- 读入指定目录下所有的*.hbm.xml配置信息。ORM映射信息 -->
+		<property name="mappingLocations" value="classpath:com/company/dao/pojo/*.hbm.xml"></property>		
+	</bean>
+	
+	
+	
+	<!-- 根据spring框架的aop特性，实现基于service层的事物处理机制，实现结果：当执行service层的方法时，执行有两种方式，重点：注解方式（应用），xml事务配置方式（了解） -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	
+	
+	
+	
+	
+	
+</beans>

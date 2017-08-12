@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.company.dao.factory.DaoFactory;
 import com.company.dao.idao.IProductDao;
@@ -17,7 +18,7 @@ public class DaoProductImplTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		productDao = DaoFactory.getProductInstance();
+		productDao = (IProductDao) new ClassPathXmlApplicationContext("applicationContext.xml").getBean("productDao");
 	}
 
 	@Test

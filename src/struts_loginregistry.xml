@@ -16,11 +16,11 @@
 			mysql_registry.action
 		 -->
 		
-		<action name="mysql_login" class="com.company.action.LoginRegistryAction"
+		<action name="mysql_login" class="loginregistryAction"
 			method="login">
 			<result name="success" type="redirectAction">product_findAll</result>
 		</action>
-		<action name="mysql_registry" class="com.company.action.LoginRegistryAction"
+		<action name="mysql_registry" class="loginregistryAction"
 			method="registry">
 			<result name="success" type="redirect">/login.jsp</result>
 		</action>

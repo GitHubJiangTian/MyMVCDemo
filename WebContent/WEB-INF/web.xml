@@ -5,6 +5,17 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 添加一个SpringIOC容器的Listener,Tomcat启动时候，会自动加载IOC容器，进而加载所有的action对象 -->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- Struts2过滤器 -->
   <filter>
   	<filter-name>struts2</filter-name>
   	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>

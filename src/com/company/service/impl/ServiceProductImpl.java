@@ -2,7 +2,11 @@ package com.company.service.impl;
 
 import java.util.List;
 
-import com.company.dao.factory.DaoFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.company.dao.idao.IProductDao;
 import com.company.dao.pojo.Product;
 import com.company.service.iservice.IProductService;
@@ -11,14 +15,18 @@ import com.company.service.iservice.IProductService;
  * 
  * @author wpjt1 接口IProductService的实现类
  */
+
+@Service("productService")
 public class ServiceProductImpl implements IProductService {
 
+	@Autowired
+	@Qualifier("productDao")
 	private IProductDao productDao;
 
 	public ServiceProductImpl() {
-		productDao = DaoFactory.getProductInstance();
 	}
 
+	@Transactional
 	@Override
 	public String save(Product t) {
 		String msg = "error";
@@ -31,6 +39,7 @@ public class ServiceProductImpl implements IProductService {
 		return msg;
 	}
 
+	@Transactional
 	@Override
 	public String update(Product t) {
 		String msg = "error";
@@ -43,6 +52,7 @@ public class ServiceProductImpl implements IProductService {
 		return msg;
 	}
 
+	@Transactional
 	@Override
 	public String delete(Product t) {
 		String msg = "error";
@@ -55,6 +65,7 @@ public class ServiceProductImpl implements IProductService {
 		return msg;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Product> findAll() {
 		List<Product> productList = null;
@@ -67,6 +78,7 @@ public class ServiceProductImpl implements IProductService {
 		return productList;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public Product findById(Integer k) {
 		Product p = null;
@@ -79,6 +91,7 @@ public class ServiceProductImpl implements IProductService {
 		return p;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Product> findByName(String pname) {
 		List<Product> productList = null;
